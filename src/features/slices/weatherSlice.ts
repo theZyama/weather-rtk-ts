@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 import {WeatherInfo} from "../../utils/types";
 
 
@@ -7,7 +7,7 @@ const weatherSlice = createSlice({
     name: 'weather',
     initialState,
     reducers: {
-        putWeatherInfo: (_state, action: PayloadAction<string>) => action.payload
+        putWeatherInfo: (_state, action) => action.payload
     }
 })
 

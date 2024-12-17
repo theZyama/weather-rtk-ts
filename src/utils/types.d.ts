@@ -3,5 +3,5 @@ export interface WeatherInfo{
     country?: string,
     temp?: number,
     pressure?: number,
-    sunrise?: number
+    sunset?: number
 }

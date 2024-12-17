@@ -1,15 +1,18 @@
+import {fetchWeather} from "../api/asyncWeatherAction.ts";
 import {createSlice} from "@reduxjs/toolkit";
-import {WeatherInfo} from "../../utils/types";
 
 
-const initialState: WeatherInfo = {}
 const weatherSlice = createSlice({
-    name: 'weather',
+    name: "weather",
     initialState,
-    reducers: {
-        putWeatherInfo: (_state, action) => action.payload
-    }
-})
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchWeather.pending, (_state) => {"loading"} )
+            .addCase(fetchWeather.fulfilled,
+                (_state, action) => action.payload)
+            .addCase(fetchWeather.rejected, () => "failed");
+    },
+});
 
-export const {putWeatherInfo} = weatherSlice.actions
-export default weatherSlice.reducer
+export default weatherSlice.reducer;
